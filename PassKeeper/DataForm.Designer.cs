@@ -30,7 +30,7 @@ namespace PassKeeper
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.DataListView = new System.Windows.Forms.ListView();
             this.Login = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Password = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -52,20 +52,20 @@ namespace PassKeeper
             this.label1.TabIndex = 3;
             this.label1.Text = "Data";
             // 
-            // listView1
+            // DataListView
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.DataListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Login,
             this.Password,
             this.Description});
-            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(21, 30);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(795, 199);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.DataListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DataListView.HideSelection = false;
+            this.DataListView.Location = new System.Drawing.Point(21, 30);
+            this.DataListView.Name = "DataListView";
+            this.DataListView.Size = new System.Drawing.Size(795, 199);
+            this.DataListView.TabIndex = 2;
+            this.DataListView.UseCompatibleStateImageBehavior = false;
+            this.DataListView.View = System.Windows.Forms.View.Details;
             // 
             // Login
             // 
@@ -161,7 +161,7 @@ namespace PassKeeper
             this.Controls.Add(this.addloginbox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.DataListView);
             this.Name = "DataForm";
             this.Text = "DataForm";
             this.ResumeLayout(false);
@@ -172,7 +172,7 @@ namespace PassKeeper
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView DataListView;
         private System.Windows.Forms.ColumnHeader Login;
         private System.Windows.Forms.ColumnHeader Password;
         private System.Windows.Forms.ColumnHeader Description;

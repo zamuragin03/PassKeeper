@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Data.SQLite;
 using System.Linq;
@@ -15,7 +16,6 @@ namespace PassKeeper
         private int User_id;
 
         private SQLiteConnection db;
-        SQLiteDataReader reader;
         SQLiteCommand command;
 
         public Authorization()
@@ -26,18 +26,29 @@ namespace PassKeeper
         }
         public bool CheckAuth()
         {
+            
             command = new SQLiteCommand($"select User_id,Login,Password from User where Login='{Login}' and Password= '{Password}'", db);
-            reader = command.ExecuteReader();
-            foreach (DbDataRecord el in reader)
+            SQLiteDataAdapter da = new SQLiteDataAdapter(command);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            foreach (DataRow row in dt.Rows)
             {
-                if (el is not null)
+                if (row is not null)
                 {
-                    User_id = int.Parse(el["User_id"].ToString());
+                    User_id = int.Parse(row["User_id"].ToString());
                     return true;
+
                 }
             }
 
             return false;
+        }
+
+
+        public void Dispose()
+        {
+            db.Close();
         }
 
         public int GetUserId() => User_id;

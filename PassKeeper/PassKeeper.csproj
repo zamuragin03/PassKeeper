@@ -69,7 +69,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScytaleCipher.cs" />
+    <Compile Include="XORCipher.cs" />
     <Compile Include="WorkingWithDB.cs" />
     <EmbeddedResource Include="DataForm.resx">
       <DependentUpon>DataForm.cs</DependentUpon>
