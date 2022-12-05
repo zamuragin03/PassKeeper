@@ -26,7 +26,7 @@ namespace PassKeeper
         }
         public bool CheckAuth()
         {
-            
+
             command = new SQLiteCommand($"select User_id,Login,Password from User where Login='{Login}' and Password= '{Password}'", db);
             SQLiteDataAdapter da = new SQLiteDataAdapter(command);
             DataTable dt = new DataTable();
@@ -45,6 +45,38 @@ namespace PassKeeper
             return false;
         }
 
+        public void AddNewProfile()
+        {
+
+            command = new SQLiteCommand(
+                "insert into User(User_id,Login,Password) values " +
+                "(@User_id,@Login,@Password)", db);
+
+            command.Parameters.AddWithValue("@User_id", null);
+            command.Parameters.AddWithValue("@Login", Login);
+            command.Parameters.AddWithValue("@Password", Password);
+            command.ExecuteNonQuery();
+
+
+        }
+
+        public bool CheckConstraint()
+        {
+            command = new SQLiteCommand($"select Login from User where Login='{Login}'", db);
+            SQLiteDataAdapter da = new SQLiteDataAdapter(command);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                if (row is not null)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
 
         public void Dispose()
         {

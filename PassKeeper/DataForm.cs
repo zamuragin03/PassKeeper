@@ -20,6 +20,7 @@ namespace PassKeeper
         private SQLiteConnection db;
         SQLiteDataReader reader;
         SQLiteCommand command;
+        private DataStructure selectedData;
 
         public DataForm(int user_id)
         {
@@ -29,6 +30,40 @@ namespace PassKeeper
 
             db = new SQLiteConnection("Data Source = MyDB.db;");
             db.Open();
+            UpdateListView();
+
+            ToolStripMenuItem delete = new ToolStripMenuItem("Удалить");
+            delete.Click += delete_selected_click;
+            ToolStripMenuItem edit = new ToolStripMenuItem("Измнить");
+            edit.Click += edit_selected_click;
+            contextMenuStrip1.Items.AddRange(new[] { delete, edit });
+
+
+        }
+
+        private void edit_selected_click(object sender, EventArgs e)
+        {
+            var text = DataListView.SelectedItems[0];
+
+            selectedData = new()
+            {
+                Login = text.SubItems[0].Text,
+                Password = text.SubItems[1].Text,
+                Description = text.SubItems[2].Text,
+            };
+        }
+
+        private void delete_selected_click(object sender, EventArgs e)
+        {
+            var text = DataListView.SelectedItems[0];
+
+            selectedData = new()
+            {
+                Login = text.SubItems[0].Text,
+                Password = text.SubItems[1].Text,
+                Description = text.SubItems[2].Text,
+            };
+            DB.DeleteData(selectedData);
             UpdateListView();
         }
 
@@ -56,5 +91,18 @@ namespace PassKeeper
             }
         }
 
+        private void DataListView_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                
+                var focusedItem = DataListView.FocusedItem;
+                if (focusedItem != null && focusedItem.Bounds.Contains(e.Location))
+                {
+                    contextMenuStrip1.Show(PointToScreen(e.Location));
+
+                }
+            }
+        }
     }
 }

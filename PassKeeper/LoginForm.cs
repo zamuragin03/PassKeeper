@@ -38,5 +38,11 @@ namespace PassKeeper
             passbox.Text = "";
             loginbox.Text = "";
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            RegisterForm f = new();
+            f.Show();
+        }
     }
 }

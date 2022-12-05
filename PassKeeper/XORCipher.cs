@@ -18,7 +18,6 @@ namespace PassKeeper
 
             return r.Substring(0, n);
         }
-
         private string Cipher(string text, string secretKey)
         {
             var currentKey = GetRepeatKey(secretKey, text.Length);
@@ -30,10 +29,8 @@ namespace PassKeeper
 
             return res;
         }
-
         public string Encrypt(string plainText, string password)
             => Cipher(plainText, password);
-
         public string Decrypt(string encryptedText, string password)
             => Cipher(encryptedText, password);
     }

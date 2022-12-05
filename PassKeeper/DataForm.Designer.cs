@@ -29,6 +29,7 @@ namespace PassKeeper
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.DataListView = new System.Windows.Forms.ListView();
             this.Login = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -41,6 +42,7 @@ namespace PassKeeper
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -66,6 +68,7 @@ namespace PassKeeper
             this.DataListView.TabIndex = 2;
             this.DataListView.UseCompatibleStateImageBehavior = false;
             this.DataListView.View = System.Windows.Forms.View.Details;
+            this.DataListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DataListView_MouseClick);
             // 
             // Login
             // 
@@ -100,7 +103,6 @@ namespace PassKeeper
             this.addloginbox.Name = "addloginbox";
             this.addloginbox.Size = new System.Drawing.Size(147, 20);
             this.addloginbox.TabIndex = 5;
-            this.addloginbox.Text = "SomeLogin";
             // 
             // addpassbox
             // 
@@ -108,7 +110,6 @@ namespace PassKeeper
             this.addpassbox.Name = "addpassbox";
             this.addpassbox.Size = new System.Drawing.Size(168, 20);
             this.addpassbox.TabIndex = 6;
-            this.addpassbox.Text = "SomePass";
             // 
             // adddesbox
             // 
@@ -116,7 +117,7 @@ namespace PassKeeper
             this.adddesbox.Name = "adddesbox";
             this.adddesbox.Size = new System.Drawing.Size(281, 70);
             this.adddesbox.TabIndex = 7;
-            this.adddesbox.Text = "SomeText";
+            this.adddesbox.Text = "";
             // 
             // label2
             // 
@@ -148,6 +149,11 @@ namespace PassKeeper
             this.label4.TabIndex = 10;
             this.label4.Text = "Description";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // DataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,6 +169,7 @@ namespace PassKeeper
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DataListView);
             this.Name = "DataForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DataForm";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -183,5 +190,6 @@ namespace PassKeeper
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

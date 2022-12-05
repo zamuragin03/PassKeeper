@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Data.Common;
 using System.Data.SQLite;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace PassKeeper
         {
 
             string Key = GenerateEncryptKey();
-            
+
 
             command = new SQLiteCommand(
                 "insert into Data(Data_id,user_id,Login,Password,EncryptKey,Description) values " +
@@ -51,7 +52,7 @@ namespace PassKeeper
         public List<string[]> GetData()
         {
             List<string[]> arr = new();
-            command = new SQLiteCommand($"select Login,Password,Description,EncryptKey from Data where user_id = {user_id}", db);
+            command = new SQLiteCommand($"select distinct Login,Password,Description,EncryptKey from Data where user_id = {user_id}", db);
             reader = command.ExecuteReader();
             foreach (DbDataRecord el in reader)
             {
@@ -67,9 +68,54 @@ namespace PassKeeper
             return arr;
         }
 
+        public void DeleteData(DataStructure data)
+        {
+            List<string> keys = new List<string>();
 
-        string GenerateEncryptKey()
-            => Guid.NewGuid().ToString();
+            command = new SQLiteCommand($"select EncryptKey from Data", db);
+            SQLiteDataAdapter da = new SQLiteDataAdapter(command);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                keys.Add(row["EncryptKey"].ToString());
+
+            }
+
+
+            foreach (var key in keys)
+            {
+
+                var command3 = new SQLiteCommand($"select Data_id from Data where  Login='{c.Decrypt(data.Login, key)}'" +
+                                                 $" and  Password='{c.Decrypt(data.Password, key)}'" +
+                                                 $" and  Description='{c.Decrypt(data.Description, key)}' limit 1", db);
+
+
+                SQLiteDataAdapter da3 = new SQLiteDataAdapter(command3);
+                DataTable dt2 = new DataTable();
+                da3.Fill(dt2);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (row is not null)
+                    {
+                        var command2 = new SQLiteCommand(
+                            $"delete from Data where Login='{c.Decrypt(data.Login, key)}' and EncryptKey='{key}'",
+                            db
+                        );
+                        command2.ExecuteNonQuery();
+                        
+                    }
+                }
+            }
+        }
+
+        private string GenerateEncryptKey()
+        {
+            Random rnd = new();
+            return rnd.Next(1000).ToString();
+        }
 
     }
 
