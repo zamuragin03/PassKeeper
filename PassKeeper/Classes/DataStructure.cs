@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace PassKeeper
 {
-    class DataStructure
+    public class DataStructure
     {
+        public int Data_id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public string Description { get; set; }

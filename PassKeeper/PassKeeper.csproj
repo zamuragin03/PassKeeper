@@ -42,6 +42,7 @@
     <Reference Include="System.Data.SQLite, Version=1.0.117.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\lib\net46\System.Data.SQLite.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,34 +54,62 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authorization.cs" />
-    <Compile Include="DataForm.cs">
+    <Compile Include="Classes\Password.cs" />
+    <Compile Include="Forms\AnalyzeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DataForm.Designer.cs">
+    <Compile Include="Forms\AnalyzeForm.Designer.cs">
+      <DependentUpon>AnalyzeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Authorization.cs" />
+    <Compile Include="Forms\DataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DataForm.Designer.cs">
       <DependentUpon>DataForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataStructure.cs" />
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Classes\DataStructure.cs" />
+    <Compile Include="Forms\DBDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Forms\DBDataForm.Designer.cs">
+      <DependentUpon>DBDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EditDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditDataForm.Designer.cs">
+      <DependentUpon>EditDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterForm.cs">
+    <Compile Include="Forms\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegisterForm.Designer.cs">
+    <Compile Include="Forms\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="XORCipher.cs" />
-    <Compile Include="WorkingWithDB.cs" />
-    <EmbeddedResource Include="DataForm.resx">
+    <Compile Include="Classes\XORCipher.cs" />
+    <Compile Include="Classes\WorkingWithDB.cs" />
+    <EmbeddedResource Include="Forms\AnalyzeForm.resx">
+      <DependentUpon>AnalyzeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DataForm.resx">
       <DependentUpon>DataForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Forms\DBDataForm.resx">
+      <DependentUpon>DBDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditDataForm.resx">
+      <DependentUpon>EditDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -92,7 +121,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RegisterForm.resx">
+    <EmbeddedResource Include="Forms\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -109,6 +138,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

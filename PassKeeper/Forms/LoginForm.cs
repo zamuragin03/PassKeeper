@@ -12,6 +12,7 @@ namespace PassKeeper
 {
     public partial class LoginForm : Form
     {
+        public DataForm form;
         public LoginForm()
         {
             InitializeComponent();
@@ -27,8 +28,7 @@ namespace PassKeeper
 
             if (auth.CheckAuth())
             {
-                auth.Dispose();
-                DataForm form = new DataForm(auth.GetUserId());
+                form = new DataForm(auth.GetUserId());
                 form.Show();
                 Hide();
                 return;
@@ -43,6 +43,11 @@ namespace PassKeeper
         {
             RegisterForm f = new();
             f.Show();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            Dispose();
         }
     }
 }

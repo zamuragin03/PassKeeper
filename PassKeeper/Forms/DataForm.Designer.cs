@@ -32,6 +32,7 @@ namespace PassKeeper
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.DataListView = new System.Windows.Forms.ListView();
+            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Login = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Password = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -43,6 +44,8 @@ namespace PassKeeper
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -57,18 +60,25 @@ namespace PassKeeper
             // DataListView
             // 
             this.DataListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.id,
             this.Login,
             this.Password,
             this.Description});
             this.DataListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DataListView.HideSelection = false;
             this.DataListView.Location = new System.Drawing.Point(21, 30);
+            this.DataListView.MultiSelect = false;
             this.DataListView.Name = "DataListView";
             this.DataListView.Size = new System.Drawing.Size(795, 199);
             this.DataListView.TabIndex = 2;
             this.DataListView.UseCompatibleStateImageBehavior = false;
             this.DataListView.View = System.Windows.Forms.View.Details;
             this.DataListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DataListView_MouseClick);
+            // 
+            // id
+            // 
+            this.id.Text = "id";
+            this.id.Width = 50;
             // 
             // Login
             // 
@@ -83,7 +93,7 @@ namespace PassKeeper
             // Description
             // 
             this.Description.Text = "Description";
-            this.Description.Width = 280;
+            this.Description.Width = 230;
             // 
             // button1
             // 
@@ -154,11 +164,37 @@ namespace PassKeeper
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // button2
+            // 
+            this.button2.AutoSize = true;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(12, 408);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(215, 30);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Посмотреть данные в БД";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.AutoSize = true;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Location = new System.Drawing.Point(308, 408);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(215, 30);
+            this.button3.TabIndex = 12;
+            this.button3.Text = "Посмотреть статистику";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // DataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 450);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -191,5 +227,8 @@ namespace PassKeeper
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ColumnHeader id;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

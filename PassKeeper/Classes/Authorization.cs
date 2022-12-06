@@ -78,11 +78,6 @@ namespace PassKeeper
             return true;
         }
 
-        public void Dispose()
-        {
-            db.Close();
-        }
-
         public int GetUserId() => User_id;
 
     }
