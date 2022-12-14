@@ -16,12 +16,12 @@ namespace PassKeeper
     {
         private int user_id;
         private DataStructure selectedData;
-
+        private WorkingWithDB DB;
         public DataForm(int user_id)
         {
             InitializeComponent();
             this.user_id = user_id;
-
+            DB = new WorkingWithDB(this.user_id);
             UpdateListView();
 
             ToolStripMenuItem delete = new ToolStripMenuItem("Удалить");
@@ -55,7 +55,7 @@ namespace PassKeeper
 
         private void delete_selected_click(object sender, EventArgs e)
         {
-            var DB = new WorkingWithDB(user_id);
+
 
             var text = DataListView.SelectedItems[0];
 
@@ -69,8 +69,7 @@ namespace PassKeeper
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var DB = new WorkingWithDB(user_id);
-            
+
             DataStructure temp = new()
             {
                 Login = addloginbox.Text,
@@ -83,8 +82,7 @@ namespace PassKeeper
 
         public void UpdateListView()
         {
-            var DB = new WorkingWithDB(user_id);
-            
+
             List<string[]> list = DB.GetData();
             DataListView.Items.Clear();
 
@@ -111,15 +109,19 @@ namespace PassKeeper
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DBDataForm f = new(user_id);
+            DBDataForm f = new(user_id, DB);
             f.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            AnalyzeForm form = new(user_id);
+            AnalyzeForm form = new(user_id, DB);
             form.Show();
-            Hide();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

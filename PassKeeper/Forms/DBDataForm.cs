@@ -14,13 +14,13 @@ namespace PassKeeper
     {
         private WorkingWithDB DB;
         private int user_id;
-        public DBDataForm(int user_id)
+        public DBDataForm(int user_id, WorkingWithDB DB)
         {
             this.user_id = user_id;
-            InitializeComponent();
+            this.DB = DB;
 
-             DB= new(user_id);
-             UpdateListView();
+            InitializeComponent();
+            UpdateListView();
             
         }
 

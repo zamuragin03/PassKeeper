@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace PassKeeper
 {
-    class WorkingWithDB
+    public class WorkingWithDB
     {
         private SQLiteConnection db;
         SQLiteDataReader reader;
@@ -23,7 +23,7 @@ namespace PassKeeper
 
         public WorkingWithDB(int user_id)
         {
-            db = new SQLiteConnection("Data Source = MyDB.db;New = False");
+            db = new SQLiteConnection("Data Source = MyDB.db");
             db.Open();
             this.user_id = user_id;
             c = new();
@@ -31,7 +31,6 @@ namespace PassKeeper
 
         public void AddData(DataStructure data)
         {
-            //todo проверить на уникальность десрипшона if checkdescconstraint
             string Key = GenerateEncryptKey();
 
 
@@ -40,27 +39,15 @@ namespace PassKeeper
             //    "(@Data_id,@user_id,@Login,@Password,@EncryptKey,@Description)", db);
             try
             {
-                using (SQLiteConnection myconnection = new SQLiteConnection(@"Data Source = MyDB.db"))
-                {
-                    myconnection.Open();
-                    using (SQLiteTransaction mytransaction = myconnection.BeginTransaction())
-                    {
-                        using (SQLiteCommand mycommand = new SQLiteCommand(myconnection))
-                        {
-                            mycommand.CommandText = "insert into Data(Data_id,user_id,Login,Password,EncryptKey,Description) values " +
-                                                    "(@Data_id,@user_id,@Login,@Password,@EncryptKey,@Description)";
-                            mycommand.Parameters.AddWithValue("@Data_id", null);
-                            mycommand.Parameters.AddWithValue("@user_id", user_id);
-                            mycommand.Parameters.AddWithValue("@Login", c.Encrypt(data.Login, Key));
-                            mycommand.Parameters.AddWithValue("@Password", c.Encrypt(data.Password, Key));
-                            mycommand.Parameters.AddWithValue("@EncryptKey", Key);
-                            mycommand.Parameters.AddWithValue("@Description", c.Encrypt(data.Description, Key));
-                            mycommand.ExecuteNonQuery();
-                        }
-
-                        mytransaction.Commit();
-                    }
-                }
+               command= new SQLiteCommand("insert into Data(Data_id,user_id,Login,Password,EncryptKey,Description) values " +
+                                           "(@Data_id,@user_id,@Login,@Password,@EncryptKey,@Description)",db);
+               command.Parameters.AddWithValue("@Data_id", null);
+               command.Parameters.AddWithValue("@user_id", user_id);
+               command.Parameters.AddWithValue("@Login", c.Encrypt(data.Login, Key));
+               command.Parameters.AddWithValue("@Password", c.Encrypt(data.Password, Key));
+               command.Parameters.AddWithValue("@EncryptKey", Key);
+               command.Parameters.AddWithValue("@Description", c.Encrypt(data.Description, Key));
+               command.ExecuteNonQuery();
             }
             catch(SQLiteException ex)
             {
@@ -73,6 +60,10 @@ namespace PassKeeper
         public void EditData(DataStructure data)
         {
             string Key = GenerateEncryptKey();
+
+
+
+
             command = new SQLiteCommand($"update Data set Login = '{c.Encrypt(data.Login, Key)}' where Data_id = {data.Data_id}", db);
             command.ExecuteNonQuery();
             command = new SQLiteCommand($"update Data set Password = '{c.Encrypt(data.Password, Key)}' where Data_id = {data.Data_id}", db);
@@ -154,7 +145,6 @@ namespace PassKeeper
             {
                 return int.Parse(el["count(user_id)"].ToString());
             }
-            command.Dispose();
             return 0;
         }
         public List<string> GetAllPasses()
@@ -166,17 +156,8 @@ namespace PassKeeper
             {
                 arr.Add(c.Decrypt(el["Password"].ToString(),el["EncryptKey"].ToString()));
             }
-            command.Dispose();
             return arr;
         }
-
-        public void Dispose()
-        {
-            db.Close();
-            db.Dispose();
-            db = null;
-        }
-
     }
 
 }
