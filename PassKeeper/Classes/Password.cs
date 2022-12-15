@@ -10,7 +10,6 @@ namespace PassKeeper.Classes
     public enum Strength { Low = 1, Medium, High, VeryHigh, Paranoid };
     public static class Password
     {
-       
         public static Strength PasswordStrength(string password)
         {
             int score = 0;

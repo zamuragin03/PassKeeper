@@ -79,7 +79,7 @@ namespace PassKeeper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 391);
+            this.ClientSize = new System.Drawing.Size(367, 391);
             this.Controls.Add(this.StatLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chart1);

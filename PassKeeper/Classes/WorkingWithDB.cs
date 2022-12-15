@@ -49,19 +49,12 @@ namespace PassKeeper
                command.Parameters.AddWithValue("@Description", c.Encrypt(data.Description, Key));
                command.ExecuteNonQuery();
             }
-            catch(SQLiteException ex)
-            {
-
-            }
-
-
+            catch(SQLiteException ex) { }
         }
 
         public void EditData(DataStructure data)
         {
             string Key = GenerateEncryptKey();
-
-
 
 
             command = new SQLiteCommand($"update Data set Login = '{c.Encrypt(data.Login, Key)}' where Data_id = {data.Data_id}", db);

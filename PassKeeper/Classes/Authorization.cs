@@ -38,7 +38,6 @@ namespace PassKeeper
                 {
                     User_id = int.Parse(row["User_id"].ToString());
                     return true;
-
                 }
             }
 

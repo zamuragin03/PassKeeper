@@ -14,17 +14,10 @@
       <FileName>Classes\Authorization.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PassKeeper.DataStructure">
-    <Position X="2.25" Y="1" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAACAACAAAQAAAAAAA=</HashCode>
-      <FileName>Classes\DataStructure.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="PassKeeper.WorkingWithDB">
     <Position X="7.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAgEKAQAAAAABAAAAAAAEQAAECAABAAAQAQAAA=</HashCode>
+      <HashCode>AAAAIAAgEIAQAAAAABAAAAAAAEQAAECAABAAAQAQAAA=</HashCode>
       <FileName>Classes\WorkingWithDB.cs</FileName>
     </TypeIdentifier>
   </Class>

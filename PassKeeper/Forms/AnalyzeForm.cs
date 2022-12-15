@@ -22,7 +22,7 @@ namespace PassKeeper
             this.DB = DB;
 
             UpdateFields();
-            
+            chart1.Series["s1"].IsValueShownAsLabel = true;
         }
 
         void UpdateFields()
@@ -47,7 +47,7 @@ namespace PassKeeper
 
             foreach (var x in q)
             {
-                StatLabel.Text = StatLabel.Text + x.Value + " — " + x.Count + "\n";
+
                 chart1.Series["s1"].Points.AddXY(x.Value.ToString(), i);
                 i++;
             }
