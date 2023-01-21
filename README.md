@@ -1,6 +1,6 @@
 # PassKeeper
 
-### This app is used to keep users passwords. I used XOR Cipher in order to hide data which user types. Encrypted data contains in DB, in my case it's sqlite3, DB could be changed in whatever you want
+### This app is used to keep user passwords. I used XOR Cipher in order to hide data which user types. Encrypted data contains in DB, in my case it's sqlite3, DB could be changed in whatever you want
 
 There are 5 forms to controll app
 
