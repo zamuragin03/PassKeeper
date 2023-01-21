@@ -62,7 +62,7 @@ namespace PassKeeper
             // 
             this.button1.AutoSize = true;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(183, 224);
+            this.button1.Location = new System.Drawing.Point(183, 211);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(196, 45);
             this.button1.TabIndex = 2;
@@ -86,26 +86,26 @@ namespace PassKeeper
             this.loginbox.Name = "loginbox";
             this.loginbox.Size = new System.Drawing.Size(196, 31);
             this.loginbox.TabIndex = 4;
-            this.loginbox.Text = "Valeria_123";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(24, 25);
+            this.label3.Location = new System.Drawing.Point(116, 26);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(314, 25);
+            this.label3.Size = new System.Drawing.Size(191, 25);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Здраввствуйте, аторизуйтесь!";
+            this.label3.Text = "Hello, auth please!";
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.Location = new System.Drawing.Point(183, 280);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(196, 23);
+            this.button2.Size = new System.Drawing.Size(196, 30);
             this.button2.TabIndex = 6;
-            this.button2.Text = "Зарегистрироваться";
+            this.button2.Text = "Register";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 

@@ -48,8 +48,7 @@ namespace PassKeeper
             foreach (var x in q)
             {
 
-                chart1.Series["s1"].Points.AddXY(x.Value.ToString(), i);
-                i++;
+                chart1.Series["s1"].Points.AddXY(x.Value.ToString(), x.Count);
             }
         }
 

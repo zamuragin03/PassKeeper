@@ -42,11 +42,11 @@ namespace PassKeeper
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(12, 23);
+            this.label3.Location = new System.Drawing.Point(146, 30);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(363, 25);
+            this.label3.Size = new System.Drawing.Size(221, 25);
             this.label3.TabIndex = 11;
-            this.label3.Text = "Здраввствуйте, зарегистрируйтесь";
+            this.label3.Text = "Hello, register please!";
             // 
             // loginbox
             // 
@@ -101,9 +101,9 @@ namespace PassKeeper
             this.CheckPassBox.AutoSize = true;
             this.CheckPassBox.Location = new System.Drawing.Point(373, 169);
             this.CheckPassBox.Name = "CheckPassBox";
-            this.CheckPassBox.Size = new System.Drawing.Size(88, 17);
+            this.CheckPassBox.Size = new System.Drawing.Size(82, 17);
             this.CheckPassBox.TabIndex = 13;
-            this.CheckPassBox.Text = "Посмотреть";
+            this.CheckPassBox.Text = "Check pass";
             this.CheckPassBox.UseVisualStyleBackColor = true;
             this.CheckPassBox.CheckedChanged += new System.EventHandler(this.CheckPassBox_CheckedChanged);
             // 

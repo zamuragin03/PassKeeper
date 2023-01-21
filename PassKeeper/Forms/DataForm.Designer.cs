@@ -103,7 +103,7 @@ namespace PassKeeper
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 30);
             this.button1.TabIndex = 4;
-            this.button1.Text = "Добавить";
+            this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -172,7 +172,7 @@ namespace PassKeeper
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(215, 30);
             this.button2.TabIndex = 11;
-            this.button2.Text = "Посмотреть данные в БД";
+            this.button2.Text = "Examine data in DB";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -184,7 +184,7 @@ namespace PassKeeper
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(215, 30);
             this.button3.TabIndex = 12;
-            this.button3.Text = "Посмотреть статистику";
+            this.button3.Text = "Examine statistics";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
